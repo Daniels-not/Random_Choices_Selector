@@ -1,0 +1,86 @@
+$colors: (
+    "bg_color": hsl(0, 100%, 64%),
+    "textarea_focus": hsla(0, 0%, 47%, 0.467),
+    "tag_choices": hsl(0, 0%, 27%),
+    "text": hsl(0, 0%, 95%),
+    "selected_choice": hsl(0, 58%, 49%),
+);
+
+@function get_colors($color) {
+    @return map-get($colors, $color);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+
+    background-color: get_colors(bg_color);
+}
+
+.container{
+    width: 40.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+textarea{
+    display: block;
+    outline: none;
+    resize: none;
+    width: 100%;
+    height: 200px;
+
+    margin-block: 1rem;
+    padding: 1rem;
+
+    font-family: inherit;
+    font-size: 1.2rem;
+
+    border-radius: 0.5rem;
+
+    &:focus{
+        border: 3px solid get_colors(textarea_focus);
+    }
+}
+
+h3{
+    color: get_colors(text);
+    letter-spacing: 0.125rem;
+    font-size: 1.5rem;
+}
+
+
+.tag{
+    background-color: get_colors(tag_choices);
+    color: get_colors(text);
+    border-radius: 3.125rem;
+    padding: 8px 15px;
+    margin: 7px 5px 20px 0px;
+    font-size: 1.2em;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.highlight{
+    background-color: get_colors(selected_choice);
+}
+
+@media (max-width: 668px) {
+    body{
+        padding-inline: 1rem;
+    }
+}
